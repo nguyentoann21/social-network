@@ -1,0 +1,135 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 20px;
+  background-color: #4267b2;
+  color: #fff;
+  flex-wrap: wrap;
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 36px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000,
+        4px 4px 0 #000;
+    }
+  }
+
+  .header-search {
+    max-width: 30%;
+    position: relative;
+    flex-grow: 1;
+    margin: 0 50px 0 30px;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 1px 1px 0 #000, 2px 2px 0 #000, 3px 3px 0 #000, 4px 4px 0 #000;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    img {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 20px;
+    }
+  }
+
+  .header-nav {
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      padding: 0;
+      flex-wrap: wrap;
+
+      li {
+        position: relative;
+        width: 47px;
+        font-size: 16px;
+        color: #ff0;
+        font-weight: 600;
+        padding: 5px;
+        transition: color 0.3s;
+        text-shadow: 2px 2px 0 #000;
+
+        &.active {
+          background: linear-gradient(90deg, #ff0, #0f0) no-repeat;
+          background-size: 100% 2px;
+          background-position: 50% 100%;
+          animation: light-active 1.25s linear infinite;
+          color: #fff;
+        }
+
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            height: 36px;
+            filter: drop-shadow(0 0 1px #000);
+            transition: filter 0.75s ease-in-out;
+          }
+        }
+
+        &:hover {
+          animation: anim-glow 1s ease infinite;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-nav ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+}
+
+@keyframes anim-glow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 5px #fff);
+  }
+}
+
+@keyframes light-active {
+  0% {
+    background-size: 0% 2px;
+  }
+
+  50% {
+    background-size: 100% 2px;
+  }
+
+  100% {
+    background-size: 0% 2px;
+  }
+}

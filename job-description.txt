@@ -1,0 +1,13 @@
+JOB DESCRIPTION
+1. Frontend: React, scss and javascript
+2. Backend: NodeJs
+3. Database: MongoDB
+4. Save and streaming music: AWS S3 to save file and CloudFront
+5. Call video/audio: WebRTC
+6. Authentication/Authorization: JWT(JSON Web Tokens) and https
+7. Model: Agile
+
+--------------------------------------------------------------------------------------
+This is a website code base on Facebook, Zing MP3 and Instagram. User use the website 
+to connect with friends and they can unwind with music and they can chat or call with 
+audio/video together.
