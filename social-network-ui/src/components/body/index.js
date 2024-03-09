@@ -1,9 +1,15 @@
 import React from 'react';
+import Reel from './reels';
+import Suggest from './suggest';
+import Artical from './article';
+import './body.scss';
 
 const Body = () => {
     return (
-        <div>
-            <h1>Body</h1>
+        <div className='body-container'>
+            <Reel />
+            <Suggest />
+            <Artical />
         </div>
     );
 }
