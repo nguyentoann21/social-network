@@ -1,64 +1,142 @@
-.articles-container {
+.article-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 20px;
+    background-color: #444;
 
-    .article {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        margin-bottom: 20px;
-        padding: 20px;
-        width: 100%;
-        max-width: 600px;
+    .article-title {
+        display: flex;
+        align-items: center;
 
         h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: start;
+            color: #fff;
+            text-shadow: 1px 1px 0 #00f, 2px 2px 0 #00f;
+            margin: 0 !important;
+            padding: 5px 0 5px 20px !important;
         }
 
-        p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .reactions {
+        .light {
+            padding: 0;
             display: flex;
-            align-items: center;
-            margin-top: 10px;
 
-            .reaction-selected img {
-                background-color: blue;
+            li {
+                list-style: none;
+                width: 40px;
+                height: 40px;
+                background: #fff;
+                border-radius: 50%;
+                animation: grow 1.6s ease-in-out infinite;
             }
 
-            img {
-                cursor: pointer;
-                margin-right: 10px;
+            li:nth-child(1) {
+                animation-delay: -1.4s;
+                background: #ffff00;
+                box-shadow: 0 0 50px #ffff00;
             }
 
-            button {
-                background: none;
-                border: none;
-                cursor: pointer;
-                margin-right: 5px;
+            li:nth-child(2) {
+                animation-delay: -1.2s;
+                background: #76ff03;
+                box-shadow: 0 0 50px #76ff03;
+            }
+
+            li:nth-child(3) {
+                animation-delay: -1s;
+                background: #f06292;
+                box-shadow: 0 0 50px #f06292;
+            }
+
+            li:nth-child(4) {
+                animation-delay: -0.8s;
+                background: #4fc3f7;
+                box-shadow: 0 0 50px #4fc3f7;
+            }
+
+            li:nth-child(5) {
+                animation-delay: -0.6s;
+                background: #ba68c8;
+                box-shadow: 0 0 50px #ba68c8;
+            }
+
+            li:nth-child(6) {
+                animation-delay: -0.4s;
+                background: #f57c00;
+                box-shadow: 0 0 50px #f57c00;
+            }
+
+            li:nth-child(7) {
+                animation-delay: -0.2s;
+                background: #673ab7;
+                box-shadow: 0 0 50px #673ab7;
+            }
+        }
+    }
+
+    .article-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        width: 100%;
+
+        .article {
+            background-color: #ddd;
+            border: 1px solid #fff;
+            border-radius: .5%;
+            width: 90%;
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                line-height: 1.5;
+                white-space: pre-wrap;
+            }
+
+            .reactions {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+
+                .reaction-selected img {
+                    background-color: blue;
+                }
 
                 img {
-                    width: 24px;
-                    height: 24px;
+                    cursor: pointer;
+                    margin-right: 10px;
                 }
 
-                span {
-                    font-size: 14px;
+                button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    margin-right: 5px;
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
+
+                    span {
+                        font-size: 14px;
+                    }
                 }
             }
-        }
 
-        .comments {
-            margin-top: 10px;
-        }
+            .comments {
+                margin-top: 10px;
+            }
 
-        .share {
-            margin-top: 10px;
+            .share {
+                margin-top: 10px;
+            }
         }
     }
 }
