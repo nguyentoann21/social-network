@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './footer.scss';
-import PandaIcon from '../../icons/panda.png';
+import PandaIcon from '../../assets/icons/panda.png';
 
 const Footer = () => {
   return (

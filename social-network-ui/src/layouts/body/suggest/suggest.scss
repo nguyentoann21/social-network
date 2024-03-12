@@ -80,57 +80,69 @@
         align-items: center;
         flex-wrap: wrap;
         margin-bottom: 10px;
-    
+
         .suggestion-ul {
             display: flex;
             justify-content: center;
             align-items: center;
             list-style: none;
-            padding: 0;  
+            padding: 0;
             gap: 10px;
             margin: 10px 20px;
-    
+
             .suggest-friend {
                 border-radius: 2%;
                 border: 1px solid #00f;
                 background-color: #ffe;
             }
-            
+
             li {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 padding: 10px;
-    
+
                 img {
-                    width: 40%; 
-                    height: 40%; 
+                    width: 40%;
+                    height: 40%;
                     border-radius: 50%;
                     margin-bottom: 10px;
                     background-color: #808080;
                 }
-    
+
                 span {
                     font-weight: 600;
                     padding: 10px 0;
                 }
-    
-                button {
-                    padding: 5px 10px;
-                    background-color: #007bff;
-                    color: #fff;
-                    border: none;
-                    border-radius: 5px;
+
+                .btn-manage {
+                    display: flex;
+
+                    button {
+                        padding: 5px 10px;
+                        color: #fff;
+                        border: none;
+                        border-radius: 5px;
+                        margin: 0 3px;
+                    }
+
+                    .btn-add {
+                        background-color: #007bff;
+                    }
+
+                    .btn-remove {
+                        background-color: #f00;
+                    }
                 }
             }
-    
+
             .view-all img {
                 cursor: pointer;
-                border: none; 
+                border: none;
                 background-color: transparent;
-                width: 150%; 
-                height: 150%; 
+                width: 150%;
+                height: 150%;
                 margin-bottom: 0;
                 background-color: #fff;
             }
@@ -144,8 +156,9 @@
         flex-wrap: wrap;
         margin: 5px 10px;
 
-        li, .view-all {
-            max-width: 38%; 
+        li,
+        .view-all {
+            max-width: 38%;
             margin: 5px;
         }
     }

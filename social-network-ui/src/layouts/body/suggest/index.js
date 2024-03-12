@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './suggest.scss';
 
-import Avatar from '../../../icons/panda.png';
-import ViewAllIcon from '../../../icons/view-all.png';
+import Avatar from '../../../assets/icons/panda.png';
+import ViewAllIcon from '../../../assets/icons/view-all.png';
 
 const Suggest = () => {
     const [friends, setFriends] = useState([
@@ -15,6 +15,11 @@ const Suggest = () => {
 
     const handleAddFriend = (friendId) => {
         console.log(`Added friend with id: ${friendId}`);
+    };
+
+    const handleRemoveFriend = (friendId) => {
+        setFriends(friends.filter(friend => friend.id !== friendId));
+        console.log(`Removed friend with id: ${friendId}`);
     };
 
     const handleNext = () => {
@@ -41,7 +46,10 @@ const Suggest = () => {
                         <li key={friend.id} className='suggest-friend'>
                             <img src={friend.avatarUrl} alt={friend.name} />
                             <span>{friend.name}</span>
-                            <button onClick={() => handleAddFriend(friend.id)}>Add Friend</button>
+                            <div className='btn-manage'>
+                                <button className='btn-add' onClick={() => handleAddFriend(friend.id)}>Add Friend</button>
+                                <button className='btn-remove' onClick={() => handleRemoveFriend(friend.id)}>Remove</button>
+                            </div>
                         </li>
                     ))}
                     <li className="view-all">

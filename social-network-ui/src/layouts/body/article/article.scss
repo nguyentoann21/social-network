@@ -79,30 +79,46 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin: 20px;
-        width: 100%;
+        padding: 10px 20px;
 
         .article {
             background-color: #ddd;
             border: 1px solid #fff;
             border-radius: .5%;
-            width: 90%;
+            width: 100%;
 
             h1 {
-                font-size: 24px;
-                margin-bottom: 10px;
+                font-size: 36px;
+                margin-bottom: 0;
+                text-shadow: 1px 1px 0 #fff, 2px 2px 0 #fff, 3px 3px 0 #fff,
+                    4px 4px 0 #fff;
+            }
+
+            h4  {       
+                font-size: 16px;
+                margin: 5px 0; 
+                font-style: italic;
+                font-weight: normal;
+                text-shadow: 2px 2px 0 #fff;
             }
 
             p {
                 font-size: 16px;
                 line-height: 1.5;
-                white-space: pre-wrap;
+                text-align: start;
+                word-wrap: break-word;
+                padding: 0 20px;            
             }
 
             .reactions {
                 display: flex;
                 align-items: center;
-                margin-top: 10px;
+                margin: 10px 0 0 20px;
+                width: fit-content;
+                padding: 5px 0;
+                border-radius: 1%;
+                background-color: #fff;
+                box-shadow: 0 0 1px #000;
 
                 .reaction-selected img {
                     background-color: blue;

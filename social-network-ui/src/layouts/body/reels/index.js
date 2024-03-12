@@ -3,16 +3,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./reel.scss";
-import PandaWalk from "../../../gif/panda-walk.gif";
+import PandaWalk from "../../../assets/gif/panda-walk.gif";
 
 const Reel = () => {
     const [currentVideo, setCurrentVideo] = useState(0);
     const [loaded, setLoaded] = useState([false, false, false]);
 
     const videoUrls = [
-        require("../../../videos/video-1.mp4"),
-        require("../../../videos/video-2.mp4"),
-        require("../../../videos/video-3.mp4"),
+        require("../../../assets/videos/video-1.mp4"),
+        require("../../../assets/videos/video-2.mp4"),
+        require("../../../assets/videos/video-3.mp4"),
     ];
 
     const settings = {

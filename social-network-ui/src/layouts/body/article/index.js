@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./article.scss";
 // import "./test.scss";
-import shareIcon from "../../../icons/share.png";
-import postIcon from "../../../icons/send.png";
-import heartIcon from "../../../icons/heart.png";
-import sadIcon from "../../../icons/sad.png";
-import hahaIcon from "../../../icons/funny.png";
-import likeIcon from "../../../icons/like.png";
-import removeIcon from "../../../icons/remove.png";
-import replyIcon from "../../../icons/reply.png";
-import editIcon from "../../../icons/edit.png";
+import shareIcon from "../../../assets/icons/share.png";
+import postIcon from "../../../assets/icons/send.png";
+import heartIcon from "../../../assets/icons/heart.png";
+import sadIcon from "../../../assets/icons/sad.png";
+import hahaIcon from "../../../assets/icons/funny.png";
+import likeIcon from "../../../assets/icons/like.png";
+import removeIcon from "../../../assets/icons/remove.png";
+import replyIcon from "../../../assets/icons/reply.png";
+import editIcon from "../../../assets/icons/edit.png";
 
 const reactions = {
     "❤️": heartIcon,
@@ -24,7 +24,7 @@ const Article = () => {
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud  
                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure  
                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
                     Section 1.10.32 of de Finibus Bonorum et Malorum, written by Cicero in 45 BC 
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,  
                     totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae  
@@ -76,6 +76,8 @@ const Article = () => {
                 {
                     id: 1,
                     title: "Example Article Title 1",
+                    postAt: "20-02-2024",
+                    author: "Jane",
                     content: sampleContent,
                     reaction: null,
                     reactionCount: { "❤️": 10, "😂": 5, "😢": 1, "👍": 30 },
@@ -84,6 +86,8 @@ const Article = () => {
                 {
                     id: 2,
                     title: "Example Article Title 2",
+                    postAt: "03-01-2024",
+                    author: "Jane",
                     content: sampleContent,
                     reaction: null,
                     reactionCount: 0,
@@ -92,6 +96,8 @@ const Article = () => {
                 {
                     id: 3,
                     title: "Example Article Title 3",
+                    postAt: "20-01-2024",
+                    author: "Jane",
                     content: sampleContent,
                     reaction: null,
                     reactionCount: 0,
@@ -100,6 +106,8 @@ const Article = () => {
                 {
                     id: 4,
                     title: "Example Article Title 4",
+                    postAt: "01-02-2024",
+                    author: "Jane",
                     content: sampleContent,
                     reaction: null,
                     reactionCount: 0,
@@ -108,6 +116,8 @@ const Article = () => {
                 {
                     id: 5,
                     title: "Example Article Title 5",
+                    postAt: "20-02-2023",
+                    author: "Jane",
                     content: sampleContent,
                     reaction: null,
                     reactionCount: 0,
@@ -116,6 +126,8 @@ const Article = () => {
                 {
                     id: 6,
                     title: "Example Article Title 6",
+                    postAt: "20-02-2022",
+                    author: "Jane",
                     content: sampleContent,
                     reaction: null,
                     reactionCount: 0,
@@ -134,10 +146,9 @@ const Article = () => {
 
     useEffect(() => {
         localStorage.setItem("articles", JSON.stringify(articles));
-        console.log(localStorage.getItem("articles"));
-        // if(articles.length > 0) {
-        //     localStorage.removeItem("articles");
-        // }
+            // if(articles.length > 0) {
+            //     localStorage.removeItem("articles");
+            // }
     }, [articles]);
 
     const [newComment, setNewComment] = useState("");
@@ -330,6 +341,7 @@ const Article = () => {
                 {articles.map((article, index) => (
                     <div key={index} className="article">
                         <h1>{article.title}</h1>
+                        <h4>Post at:{article.postAt} - by {article.author}</h4>
                         <p>{article.content}</p>
                         <div className="reactions">
                             {Object.entries(reactions).map(([reaction, icon]) => (
