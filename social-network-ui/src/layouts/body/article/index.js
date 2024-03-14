@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./article.scss";
-// import "./test.scss";
 import shareIcon from "../../../assets/icons/share.png";
 import postIcon from "../../../assets/icons/send.png";
 import heartIcon from "../../../assets/icons/heart.png";
@@ -146,9 +145,9 @@ const Article = () => {
 
     useEffect(() => {
         localStorage.setItem("articles", JSON.stringify(articles));
-            // if(articles.length > 0) {
-            //     localStorage.removeItem("articles");
-            // }
+        // if(articles.length > 0) {
+        //     localStorage.removeItem("articles");
+        // }
     }, [articles]);
 
     const [newComment, setNewComment] = useState("");
@@ -272,7 +271,6 @@ const Article = () => {
     };
 
     const handleEditComment = (articleId, commentId) => {
-        // Tìm bình luận đang được chỉnh sửa
         const article = articles.find(article => article.id === articleId);
         const comment = article.comments.find(comment => comment.id === commentId);
         setEditingComment({ id: commentId, text: comment.text });
@@ -300,26 +298,30 @@ const Article = () => {
         setEditingComment({ id: null, text: "" }); // Reset trạng thái chỉnh sửa
     };
 
-    const handleReplyComment = (articleId, commentId, replyText) => {
-        const newReply = {
-            id: new Date().getTime(), // Giả định cách tạo ID đơn giản
-            // userId: currentUser, // Người dùng hiện tại trả lời
-            text: replyText,
-        };
+    // const handleReplyComment = (articleId, commentId, replyText) => {
+    //     const newReply = {
+    //         id: new Date().getTime(), // Giả định cách tạo ID đơn giản
+    //         // userId: currentUser, // Người dùng hiện tại trả lời
+    //         text: replyText,
+    //     };
 
-        setArticles(articles.map(article => {
-            if (article.id === articleId) {
-                const updatedComments = article.comments.map(comment => {
-                    if (comment.id === commentId) {
-                        return { ...comment, replies: [...comment.replies, newReply] };
-                    }
-                    return comment;
-                });
-                return { ...article, comments: updatedComments };
-            }
-            return article;
-        }));
-    };
+    //     setArticles(articles.map(article => {
+    //         if (article.id === articleId) {
+    //             const updatedComments = article.comments.map(comment => {
+    //                 if (comment.id === commentId) {
+    //                     return { ...comment, replies: [...comment.replies, newReply] };
+    //                 }
+    //                 return comment;
+    //             });
+    //             return { ...article, comments: updatedComments };
+    //         }
+    //         return article;
+    //     }));
+    // };
+
+    const handleReplyComment = () => {
+        console.log('reply');
+    }
 
 
 
@@ -343,39 +345,65 @@ const Article = () => {
                         <h1>{article.title}</h1>
                         <h4>Post at:{article.postAt} - by {article.author}</h4>
                         <p>{article.content}</p>
-                        <div className="reactions">
-                            {Object.entries(reactions).map(([reaction, icon]) => (
-                                <button
-                                    key={reaction}
-                                    onClick={() => handleArticleReaction(article.id, reaction)}
-                                    className={
-                                        article.reaction === reaction ? "reaction-selected" : ""
-                                    }
-                                >
-                                    <img src={icon} alt={reaction} />
-                                    {article.reactionCount[reaction] > 0
-                                        ? ` (${article.reactionCount[reaction]})`
-                                        : ""}
-                                </button>
-                            ))}
+                        <div className="reaction-share">
+                            <div className="reactions">
+                                {Object.entries(reactions).map(([reaction, icon]) => (
+                                    <button
+                                        key={reaction}
+                                        onClick={() => handleArticleReaction(article.id, reaction)}
+                                        className={
+                                            article.reaction === reaction ? "reaction-selected" : ""
+                                        }
+                                    >
+                                        <img src={icon} alt={reaction} />
+                                        {article.reactionCount[reaction] > 0
+                                            ? ` (${article.reactionCount[reaction]})`
+                                            : ""}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="share">
+                                <img src={shareIcon} alt="Share" onClick={() => {
+                                    setShowShareOptions(!showShareOptions);
+                                    setSelectedArticleForShare(article.id);
+                                }} />
+                                {showShareOptions && selectedArticleForShare === article.id && (
+                                    <div className="share-options">
+                                        <button onClick={() => alert("Share to Facebook")}>
+                                            Facebook
+                                        </button>
+                                        <button onClick={() => alert("Share to Twitter")}>
+                                            Twitter
+                                        </button>
+                                        <button onClick={() => alert("Share to Instagram")}>
+                                            Instagram
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
                         </div>
 
                         <div className="comments">
                             {article.comments.map((comment) => (
-                                <div key={comment.id} className="comment">
-                                    {
-                                        editingComment.id === comment.id ?
-                                            <>
-                                                <textarea value={editingComment.text} onChange={(e) => setEditingComment({ ...editingComment, text: e.target.value })} />
-                                                <button onClick={() => handleSaveEdit(article.id)}>
-                                                    <img src={postIcon} alt="save-change-comment" />
-                                                </button>
-                                            </>
-                                            :
-                                            <p>{comment.text}</p>
-                                    }
-                                    <div className="reactions">
-                                        {Object.entries(reactions).map(([reaction, icon]) => (
+                                <div key={comment.id} className="comment-container">
+                                    <div className="comment">
+                                        <div className="comment-content">
+                                            {
+                                                editingComment.id === comment.id ?
+                                                    <div className="main-comment">
+                                                        <textarea className="text-comment" value={editingComment.text} onChange={(e) => setEditingComment({ ...editingComment, text: e.target.value })} />
+                                                        <img src={postIcon} alt="save-change-comment" className="edit-comment" onClick={() => handleSaveEdit(article.id)} />
+                                                    </div>
+                                                    :
+                                                    <p className="comment-view">{comment.text}</p>
+                                            }
+                                        </div>
+                                        {/* {comment.userId === currentUser && ( */}
+                                        <div className="comment-actions">
+                                            <img src={replyIcon} alt="Reply" onClick={() => handleReplyComment(article.id, comment.id)} />
+                                            <img src={editIcon} alt="Edit" onClick={() => handleEditComment(article.id, comment.id)} />
+                                            <img src={removeIcon} alt="Delete" onClick={() => handleDeleteComment(article.id, comment.id)} />
+                                            {Object.entries(reactions).map(([reaction, icon]) => (
                                             <button
                                                 key={reaction}
                                                 onClick={() =>
@@ -397,58 +425,20 @@ const Article = () => {
                                                     : ""}
                                             </button>
                                         ))}
+                                        </div>
+                                        {/* )} */}
                                     </div>
-                                    {/* {comment.userId === currentUser && ( */}
-                                    <div className="comment-actions">
-                                        <button onClick={() => handleReplyComment(article.id, comment.id)}>
-                                            <img src={replyIcon} alt="Reply" />
-                                        </button>
-                                        <button onClick={() => handleEditComment(article.id, comment.id)}>
-                                            <img src={editIcon} alt="Edit" />
-                                        </button>
-                                        <button onClick={() => handleDeleteComment(article.id, comment.id)}>
-                                            <img src={removeIcon} alt="Delete" />
-                                        </button>
-                                    </div>
-                                    {/* )} */}
                                 </div>
                             ))}
                             <div className="add-comment">
                                 <textarea
+                                    className="content"
                                     value={newComment}
                                     onChange={(e) => setNewComment(e.target.value)}
                                     placeholder="Add a comment..."
                                 ></textarea>
-                                <button
-                                    onClick={() => handleAddComment(article.id, newComment)}
-                                >
-                                    <img src={postIcon} alt="Post" />
-                                </button>
+                                <img className="btn-add-comment" src={postIcon} alt="Post" onClick={() => handleAddComment(article.id, newComment)} />
                             </div>
-                        </div>
-
-                        <div className="share">
-                            <button
-                                onClick={() => {
-                                    setShowShareOptions(!showShareOptions);
-                                    setSelectedArticleForShare(article.id);
-                                }}
-                            >
-                                <img src={shareIcon} alt="Share" />
-                            </button>
-                            {showShareOptions && selectedArticleForShare === article.id && (
-                                <div className="share-options">
-                                    <button onClick={() => alert("Share to Facebook")}>
-                                        Facebook
-                                    </button>
-                                    <button onClick={() => alert("Share to Twitter")}>
-                                        Twitter
-                                    </button>
-                                    <button onClick={() => alert("Share to Instagram")}>
-                                        Instagram
-                                    </button>
-                                </div>
-                            )}
                         </div>
                     </div>
                 ))}

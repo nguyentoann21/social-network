@@ -82,10 +82,12 @@
         padding: 10px 20px;
 
         .article {
-            background-color: #ddd;
+            background-color: #eee;
             border: 1px solid #fff;
             border-radius: .5%;
             width: 100%;
+            padding-bottom: 40px;
+            margin-bottom: 10px;
 
             h1 {
                 font-size: 36px;
@@ -94,9 +96,9 @@
                     4px 4px 0 #fff;
             }
 
-            h4  {       
+            h4 {
                 font-size: 16px;
-                margin: 5px 0; 
+                margin: 5px 0;
                 font-style: italic;
                 font-weight: normal;
                 text-shadow: 2px 2px 0 #fff;
@@ -105,53 +107,174 @@
             p {
                 font-size: 16px;
                 line-height: 1.5;
-                text-align: start;
+                text-align: justify;
                 word-wrap: break-word;
-                padding: 0 20px;            
+                padding: 0 50px;
             }
 
-            .reactions {
+            .reaction-share {
                 display: flex;
-                align-items: center;
-                margin: 10px 0 0 20px;
-                width: fit-content;
-                padding: 5px 0;
-                border-radius: 1%;
-                background-color: #fff;
-                box-shadow: 0 0 1px #000;
 
-                .reaction-selected img {
-                    background-color: blue;
+                .reactions {
+                    display: flex;
+                    align-items: flex-start;
+                    margin: 5px 0 0 45px;
+                    width: fit-content;
+                    border-radius: 1%;
+                    padding-top: .2%;
+
+                    .reaction-selected img {
+                        border: 1px solid #00f;
+                        background-color: #fff !important;
+                    }
+
+                    img {
+                        padding: 5px;
+                        background-color: #c0c0c0;
+                        border: 1px solid transparent;
+                        border-radius: 10%;
+                    }
+
+                    button {
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        margin-right: 5px;
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                        }
+
+                        span {
+                            font-size: 14px;
+                        }
+                    }
                 }
 
-                img {
-                    cursor: pointer;
-                    margin-right: 10px;
-                }
-
-                button {
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    margin-right: 5px;
+                .share {
+                    margin-left: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding-top: .2%;
 
                     img {
                         width: 24px;
                         height: 24px;
-                    }
-
-                    span {
-                        font-size: 14px;
+                        padding: 5px;
+                        background-color: #fff;
+                        border: 1px solid transparent;
+                        border-radius: 10%;
                     }
                 }
             }
 
             .comments {
-                margin-top: 10px;
-            }
+                margin: 5px 50px 0 50px;
 
-            .share {
-                margin-top: 10px;
+
+                .comment-container {
+
+                    .comment {
+                        display: flex;
+                        flex-direction: column;
+
+                        .comment-content {
+
+                            .comment-view {
+                                background-color: #ddd;
+                                padding: 5px 10px !important;
+                                line-height: 1.6;
+                                margin: 0 0 5px 0 !important;
+                                border-radius: 1%;
+                                text-shadow: 1px 1px 0 #eee, 2px 2px 0 #eee;;
+                            }
+
+                            .main-comment {
+                                display: flex;
+                                margin-bottom: .5%;
+
+                                .text-comment {
+                                    width: 55%;
+                                    padding: 5px 50px 5px 20px;
+                                    min-height: 100px;
+                                }
+
+                                .edit-comment {
+                                    width: 40px;
+                                    height: 40px;
+                                    position: absolute;
+                                    right: 41%;
+                                    margin-top: .5%;
+                                }
+                            }
+                        }
+
+                        .comment-actions {
+                            display: flex;
+                            justify-content: flex-start;
+                            margin: 0 0 10px 0 !important;
+                            padding: 0 !important;
+
+                            .reaction-selected img {
+                                background-color: #aaa !important;
+                            }
+    
+                            button {
+                                background: none;
+                                border: none;
+
+                                img {
+                                    margin-right: 5px;
+                                    border-radius: 20%;
+
+                                    &:hover {
+                                        background-color: #ff0;
+                                    }
+                                }
+    
+                                span {
+                                    font-size: 14px;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                }
+                            }
+
+                            img {
+                                width: 20px;
+                                height: 20px;
+                                margin-right: 10px;
+                                background-color: #ddd;
+                                border-radius: 50%;
+                                padding: 3px;
+                                border: 1px solid transparent;
+
+                                &:hover {
+                                    background-color: #efe;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .add-comment {
+                    display: flex;
+
+                    .content {
+                        width: 55%;
+                        padding: 5px 50px 5px 20px;
+                        min-height: 100px;
+                    }
+
+                    .btn-add-comment {
+                        width: 40px;
+                        height: 40px;
+                        position: absolute;
+                        right: 41%;
+                        margin-top: .5%;
+                    }
+                }
             }
         }
     }
