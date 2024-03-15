@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import './header.scss';
-import PandaIcon from '../../assets/icons/panda.png'; 
-import SearchIcon from '../../assets/icons/search.png'; 
-import HomeIcon from '../../assets/icons/home.png'; 
-import MusicIcon from '../../assets/icons/music.png'; 
-import NotifyIcon from '../../assets/icons/notify.png'; 
-import ChatIcon from '../../assets/icons/chat.png'; 
-import PostIcon from '../../assets/icons/post.png'; 
-import ProfileIcon from '../../assets/icons/profile.png';
-import FriendsIcon from '../../assets/icons/friends.png'; 
-import LanguageIcon from '../../assets/icons/earth.png'; 
+import PandaIcon from '../../../assets/icons/panda.png'; 
+import SearchIcon from '../../../assets/icons/search.png'; 
+import HomeIcon from '../../../assets/icons/home.png'; 
+import MusicIcon from '../../../assets/icons/music.png'; 
+import NotifyIcon from '../../../assets/icons/notify.png'; 
+import ChatIcon from '../../../assets/icons/chat.png'; 
+import PostIcon from '../../../assets/icons/post.png'; 
+import ProfileIcon from '../../../assets/icons/profile.png';
+import FriendsIcon from '../../../assets/icons/friends.png'; 
+import LanguageIcon from '../../../assets/icons/earth.png'; 
 
 const Header = () => {
   const location = useLocation();
